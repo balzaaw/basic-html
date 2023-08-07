@@ -1,3 +1,3 @@
-function test() {
+export function test() {
   alert("funcion test");
 }
