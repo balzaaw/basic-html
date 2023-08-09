@@ -14,14 +14,17 @@ function getAttr() {
 
 const addEventButton = () => {
   const button = document.getElementById("runner-button");
-  const img = document.createElement("img");
-  img.style.width = "32px";
-  img.style.height = "32px";
-  img.setAttribute(
-    "src",
-    "https://icons-for-free.com/iconfiles/png/512/logo+twitter+twitter+logo+icon-1320167831451644641.png"
-  );
-  button.appendChild(img);
+  const imageSource = button.dataset.img;
+
+  if (imageSource) {
+    const img = document.createElement("img");
+    img.style.width = "32px";
+    img.style.height = "32px";
+
+    img.setAttribute("src", imageSource);
+    button.appendChild(img);
+  }
+
   button.addEventListener("click", getAttr);
 };
 window.onload = addEventButton;
