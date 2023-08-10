@@ -63,8 +63,7 @@ function getAttrFromNode() {
 }
 
 const addEventButton = () => {
-  const { button, buttonStyle, ignoreStyle, imageSource } =
-    getAttrFromNode(button);
+  const { button, buttonStyle, ignoreStyle, imageSource } = getAttrFromNode();
 
   if (ignoreStyle === success) {
     setDefaultStylesButton(button);
