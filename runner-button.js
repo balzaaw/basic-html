@@ -13,6 +13,7 @@ function setDefaultStylesButton(button) {
   button.style.display = "flex";
   button.style.flexDirection = "row-reverse";
   button.style.justifyContent = "space-evenly";
+  button.style.alignItems = "center";
   button.style.gap = "5px";
   button.style.cursor = "pointer";
   button.style.borderRadius = "8px";
