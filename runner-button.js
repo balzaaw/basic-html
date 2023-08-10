@@ -20,7 +20,7 @@ function setDefaultStylesButton(button) {
 
 function setStyleButton(button, styles) {
   if (styles) {
-    button.style.cssText += buttonStyle;
+    button.style.cssText += styles;
   } else {
     button.style.backgroundColor = "#10528d";
     button.style.color = "white";
