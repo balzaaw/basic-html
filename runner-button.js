@@ -52,7 +52,7 @@ function getAttrFromNode() {
   const button = document.getElementById("runner-button");
   const imageSource = button.dataset.img;
   const buttonStyle = button.dataset.style;
-  const ignoreStyle = button.dataset.ignoreStyle;
+  const ignoreStyle = button.dataset.ignorestyle;
 
   return {
     imageSource,
