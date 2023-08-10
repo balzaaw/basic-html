@@ -1,3 +1,5 @@
+const success = "1";
+
 function getAttr() {
   const attr = document.getElementById("runner-button");
   console.log(attr);
@@ -46,15 +48,30 @@ function setLogoButton(button, imgSource) {
   }
 }
 
-const addEventButton = () => {
+function getAttrFromNode() {
   const button = document.getElementById("runner-button");
   const imageSource = button.dataset.img;
   const buttonStyle = button.dataset.style;
+  const ignoreStyle = button.dataset.ignoreStyle;
 
-  setDefaultStylesButton(button);
-  setStyleButton(button, buttonStyle);
+  return {
+    imageSource,
+    buttonStyle,
+    ignoreStyle,
+    button,
+  };
+}
+
+const addEventButton = () => {
+  const { button, buttonStyle, ignoreStyle, imageSource } =
+    getAttrFromNode(button);
+
+  if (ignoreStyle === success) {
+    setDefaultStylesButton(button);
+    setStyleButton(button, buttonStyle);
+  }
+
   setLogoButton(button, imageSource);
-
   button.addEventListener("click", getAttr);
 };
 
