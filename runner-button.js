@@ -9,6 +9,7 @@ function getAttr() {
 }
 
 function setDefaultStylesButton(button) {
+  button.style.padding = "0.6em 1.2em";
   button.style.display = "flex";
   button.style.flexDirection = "row-reverse";
   button.style.justifyContent = "space-evenly";
@@ -24,13 +25,13 @@ function setStyleButton(button, styles) {
   } else {
     button.style.backgroundColor = "#10528d";
     button.style.color = "white";
-    button.style.fontWeight = "700";
+    button.style.fontWeight = "600";
     button.style.textAlign = "center";
     button.style.transition = "border-color 0.25s";
   }
 }
 
-function setLogoButton(imgSource) {
+function setLogoButton(button, imgSource) {
   if (imgSource) {
     const img = document.createElement("img");
     img.style.width = "32px";
@@ -51,7 +52,7 @@ const addEventButton = () => {
 
   setDefaultStylesButton(button);
   setStyleButton(button, buttonStyle);
-  setLogoButton(imageSource);
+  setLogoButton(button, imageSource);
 
   button.addEventListener("click", getAttr);
 };
