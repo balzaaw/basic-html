@@ -1,5 +1,3 @@
-const success = "1";
-
 function getAttr() {
   const attr = document.getElementById("runner-button");
   console.log(attr);
@@ -65,7 +63,7 @@ function getAttrFromNode() {
 const addEventButton = () => {
   const { button, buttonStyle, ignoreStyle, imageSource } = getAttrFromNode();
 
-  if (ignoreStyle === success) {
+  if (!ignoreStyle) {
     setDefaultStylesButton(button);
     setStyleButton(button, buttonStyle);
   }
