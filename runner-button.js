@@ -1,6 +1,6 @@
-const getButtonElement = function getButton() {
+function getButton() {
   return document.getElementById("runner-button");
-};
+}
 const runner = {
   getAttr: async function () {
     // const attr = document.getElementById("runner-button");
@@ -49,7 +49,7 @@ const runner = {
     }
   },
   getAttrFromNode: function () {
-    const button = getButtonElement();
+    const button = getButton();
 
     if (button) {
       const imageSource = button.dataset.img;
