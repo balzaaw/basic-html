@@ -1,4 +1,6 @@
-const getButtonElement = document.getElementById("runner-button");
+const getButtonElement = function getButton() {
+  return document.getElementById("runner-button");
+};
 const runner = {
   getAttr: async function () {
     // const attr = document.getElementById("runner-button");
@@ -47,7 +49,7 @@ const runner = {
     }
   },
   getAttrFromNode: function () {
-    const button = getButtonElement;
+    const button = getButtonElement();
 
     if (button) {
       const imageSource = button.dataset.img;
@@ -70,9 +72,9 @@ const runner = {
     };
   },
   addEventButton: function () {
+    console.log("ggggggggg");
     const { button, buttonStyle, ignoreStyle, imageSource } =
       this.getAttrFromNode();
-
     if (button) {
       if (!ignoreStyle) {
         this.setDefaultStylesButton(button);
@@ -81,6 +83,8 @@ const runner = {
 
       this.setLogoButton(button, imageSource);
       button.addEventListener("click", getAttr);
+    } else {
+      console.log("1231231233");
     }
   },
 };
