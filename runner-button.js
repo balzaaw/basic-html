@@ -1,15 +1,14 @@
-function getButton() {
-  return document.getElementById("runner-button");
-}
 const runner = {
-  getAttr: async function () {
+  getAttr: async function getAttr() {
     // const attr = document.getElementById("runner-button");
     // console.log(attr);
     // console.log(attr?.dataset.metadata);
     // console.log(attr?.dataset.clientid);
     // console.log(attr?.dataset.environment);
 
-    const data = await fetch("https://api.nationalize.io/?name=nathaniel");
+    const data = await fetch("https://api.nationalize.io/?name=nathaniel").then(
+      (data) => data.json()
+    );
     console.log({ data });
     alert("getAttr execute");
   },
@@ -48,8 +47,16 @@ const runner = {
       button.appendChild(img);
     }
   },
-  getAttrFromNode: function () {
-    const button = getButton();
+  getAttrFromNode: async function () {
+    let resolveId = new Promise(function (myResolve) {
+      setTimeout(function () {
+        myResolve("runner-button");
+      }, 50);
+    });
+
+    const button = await resolveId.then(function (value) {
+      return document.getElementById(value);
+    });
 
     if (button) {
       const imageSource = button.dataset.img;
@@ -71,10 +78,29 @@ const runner = {
       button: null,
     };
   },
-  addEventButton: function () {
-    console.log("ggggggggg");
+  // waitelement: function waitForElementToExist(selector) {
+  //   const body = document.getElementsByClassName("sesimat");
+  //   return new Promise((resolve) => {
+  //     if (document.querySelector(selector)) {
+  //       return resolve(document.querySelector(selector));
+  //     }
+
+  //     const observer = new MutationObserver(() => {
+  //       if (document.querySelector(selector)) {
+  //         resolve(document.querySelector(selector));
+  //         observer.disconnect();
+  //       }
+  //     });
+  //     console.log(body);
+  //     observer.observe(body.childNodes[1], {
+  //       subtree: true,
+  //       childList: true,
+  //     });
+  //   });
+  // },
+  addEventButton: async function () {
     const { button, buttonStyle, ignoreStyle, imageSource } =
-      this.getAttrFromNode();
+      await this.getAttrFromNode();
     if (button) {
       if (!ignoreStyle) {
         this.setDefaultStylesButton(button);
@@ -82,9 +108,7 @@ const runner = {
       }
 
       this.setLogoButton(button, imageSource);
-      button.addEventListener("click", getAttr);
-    } else {
-      console.log("1231231233");
+      button.addEventListener("click", this.getAttr);
     }
   },
 };
